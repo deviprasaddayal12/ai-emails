@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import * as Joi from 'joi';
 import { GlobalModule } from 'src/global/global.module';
 import { AppController } from './app.controller';
@@ -16,6 +17,13 @@ import { AppService } from './app.service';
 
         SENDGRID_API_KEY: Joi.string().required(),
       }),
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URI'),
+      }),
+      inject: [ConfigService],
     }),
     GlobalModule,
   ],
