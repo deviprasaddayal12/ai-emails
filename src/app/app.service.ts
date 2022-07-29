@@ -6,7 +6,11 @@ import { EmailService } from 'src/global/services/emails.service';
 export class AppService {
   constructor(private readonly emailService: EmailService) {}
 
-  async getHello(): Promise<[ClientResponse, {}]> {
+  async ping(): Promise<String> {
+    return 'Server is up and running smooth...';
+  }
+
+  async sendTestEmail(): Promise<[ClientResponse, {}]> {
     return await this.emailService.send({
       from: 'dayal.das@utkallabs.com',
       to: 'deviprasaddayal12@gmail.com',

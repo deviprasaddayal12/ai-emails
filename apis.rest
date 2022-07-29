@@ -1,0 +1,5 @@
+GET http://localhost:3010/
+
+###
+
+POST http://localhost:3010/testEmail
