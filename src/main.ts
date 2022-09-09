@@ -21,7 +21,7 @@ async function bootstrap() {
       app,
       new DocumentBuilder()
         .addServer('http://localhost:3010', 'Local Server')
-        .addServer('https://ai-emails.herokuapp.com', 'Dev Server')
+        .addServer('https://aemailsi.herokuapp.com/', 'Dev Server')
         .addBearerAuth()
         .setTitle('Welcom to AI-Emails by DDD')
         .setDescription(
